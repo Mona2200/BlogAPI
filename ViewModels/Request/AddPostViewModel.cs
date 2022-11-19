@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 
-namespace BlogProject.ViewModels.Request
+namespace API.ViewModels.Request
 {
    public class AddPostViewModel
    {

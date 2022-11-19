@@ -1,7 +1,7 @@
 ﻿using BlogProject.ViewModels.Response;
 using System.ComponentModel.DataAnnotations;
 
-namespace BlogProject.ViewModels.Request
+namespace API.ViewModels.Request
 {
    public class AddCommentViewModel
    {

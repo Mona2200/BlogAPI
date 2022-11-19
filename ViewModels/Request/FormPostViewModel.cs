@@ -1,6 +1,6 @@
-﻿using BlogProject.Models;
+﻿using API.Models;
 
-namespace BlogProject.ViewModels.Request
+namespace API.ViewModels.Request
 {
    public class FormPostViewModel
    {

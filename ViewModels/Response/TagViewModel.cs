@@ -1,11 +1,11 @@
-﻿using BlogProject.Models;
+﻿using API.Models;
 
-namespace BlogProject.ViewModels.Response
+namespace API.ViewModels.Response
 {
-    public class TagViewModel
-    {
-    public Tag[] Tags { get; set; }
-    public Guid TagId { get; set; }
-    public string TagName { get; set; }
-    }
+   public class TagViewModel
+   {
+      public Tag[] Tags { get; set; }
+      public Guid TagId { get; set; }
+      public string TagName { get; set; }
+   }
 }
