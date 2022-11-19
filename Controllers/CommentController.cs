@@ -1,5 +1,4 @@
 ﻿using API.ViewModels.Request;
-using API.ViewModels.Response;
 using AutoMapper;
 using BlogProject.Data;
 using BlogProject.Models;
@@ -26,35 +25,30 @@ namespace API.Controllers
 
       [HttpGet]
       [Route("GetComments")]
-      public async Task<BlogProject.ViewModels.Response.CommentViewModel[]> GetComments()
+      public async Task<CommentViewModel[]> GetComments()
       {
-         var comments = await _commentService.GetComments();
-         var commentViewModels = await _commentService.GetCommentsViewModel();
-         return commentViewModels;
+         return await _commentService.GetCommentsViewModel();
       }
 
       [HttpGet]
       [Route("GetCommentById")]
-      public async Task<BlogProject.ViewModels.Response.CommentViewModel> GetCommentById(Guid id)
+      public async Task<CommentViewModel> GetCommentById(Guid id)
       {
-         var commentViewModel = await _commentService.GetCommentViewModelById(id);
-         return commentViewModel;
+         return await _commentService.GetCommentViewModelById(id);
       }
 
       [HttpGet]
       [Route("GetCommentsByUserId")]
-      public async Task<BlogProject.ViewModels.Response.CommentViewModel[]> GetCommentsByUserId(Guid userId)
+      public async Task<CommentViewModel[]> GetCommentsByUserId(Guid userId)
       {
-         var commentViewModel = await _commentService.GetCommentsViewModelByUserId(userId);
-         return commentViewModel;
+         return await _commentService.GetCommentsViewModelByUserId(userId);
       }
 
       [HttpGet]
       [Route("GetCommentsByPostId")]
-      public async Task<BlogProject.ViewModels.Response.CommentViewModel[]> GetCommentsByPostId(Guid postId)
+      public async Task<CommentViewModel[]> GetCommentsByPostId(Guid postId)
       {
-         var commentViewModel = await _commentService.GetCommentsViewModelByPostId(postId);
-         return commentViewModel;
+         return await _commentService.GetCommentsViewModelByPostId(postId);
       }
 
       [HttpPost]
@@ -78,18 +72,18 @@ namespace API.Controllers
 
       [HttpPut]
       [Route("EditComment")]
-      public async Task<IActionResult> EditComment(AddCommentViewModel view)
+      public async Task<IActionResult> EditComment(Guid commentId, AddCommentViewModel view)
       {
          if (String.IsNullOrEmpty(view.Content))
             return BadRequest();
 
          var user = await _userService.GetUserById(view.UserId);
          var post = await _postService.GetPostById(view.PostId);
+         var comment = await _commentService.GetCommentById(commentId);
 
-         if (user == null || post == null || view.Id == null)
+         if (user == null || post == null || comment == null)
             return BadRequest();
 
-         var comment = await _commentService.GetCommentById(view.Id);
          var newComment = _mapper.Map<AddCommentViewModel, Comment>(view);
          await _commentService.Update(comment, newComment);
 
