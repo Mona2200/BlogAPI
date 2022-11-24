@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
+   [ApiController]
+   [Route("[controller]")]
    public class TagController : Controller
    {
       private readonly IMapper _mapper;

@@ -8,6 +8,8 @@ using System.Security.Claims;
 
 namespace API.Controllers
 {
+   [ApiController]
+   [Route("[controller]")]
    public class PostController : Controller
    {
       private readonly IMapper _mapper;

@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
+   [ApiController]
+   [Route("[controller]")]
    public class UserController : Controller
    {
       private readonly IMapper _mapper;

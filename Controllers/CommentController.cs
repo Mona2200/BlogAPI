@@ -10,6 +10,8 @@ using System.Xml.Linq;
 
 namespace API.Controllers
 {
+   [ApiController]
+   [Route("[controller]")]
    public class CommentController : Controller
    {
       private readonly IMapper _mapper;
